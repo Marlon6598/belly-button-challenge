@@ -4,9 +4,8 @@ function Plots(id)
 {
     d3.json(url).then(data =>
     {
-        let sampleData = data;
-        let samples = sampleData.samples;
-        let identifier = samples.filter(sample => sample.id === id);
+        let samples = data.samples;
+        let identifier = samples.filter(sample => sample.id == id);
         let filtered = identifier[0];
         let sample_values = filtered.sample_values.slice(0, 10).reverse();
         let otu_ids = filtered.otu_ids.slice(0, 10).reverse();
@@ -38,7 +37,7 @@ function Plots(id)
         };
         let bubbleData = [bubbleTrace];
         let bubbleLayout = {
-            xaxis: { title: "OTU ID" },
+            xaxis: {title: "OTU ID"},
             width: 1200, height: 550
         };
         Plotly.newPlot("bubble", bubbleData, bubbleLayout);
@@ -51,14 +50,13 @@ function panelInfo(id)
 {
     d3.json(url).then(data =>
     {
-        let sampleData = data;
-        let metaData = sampleData.metadata;
+        let metaData = data.metadata;
         let identifier = metaData.filter(sample => {
             return sample.id.toString() == id})[0];
         let panel = d3.select("#sample-metadata");
         panel.html("");
         Object.entries(identifier).forEach(([key, value]) =>
-        {panel.append("h6").text(`${key}: ${value}`)});
+        {panel.append("h6").text(key, value)});
     })
 };
 
