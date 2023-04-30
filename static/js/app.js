@@ -56,7 +56,7 @@ function panelInfo(id)
         let panel = d3.select("#sample-metadata");
         panel.html("");
         Object.entries(identifier).forEach(([key, value]) =>
-        {panel.append("h6").text(key, value)});
+        {panel.append("h6").text(`${key}: ${value}`)});
     })
 };
 
@@ -70,7 +70,8 @@ function init()
     {
         sampleData = data;
         let names = sampleData.names;
-        Object.values(names).forEach(value => {dropDown.append("option").text(value)});
+        Object.values(names).forEach(value =>{
+            dropDown.append("option").text(value)});
         panelInfo(names[0]);
         Plots(names[0])
     })
