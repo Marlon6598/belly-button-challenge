@@ -45,7 +45,7 @@ function panelInfo(id)
                 y0: 0,
                 x1: x + 0.5,
                 y1: y + 0.5,
-                line: {color: "maroon", width: 6}
+                line: {color: "maroon", width: 8}
             }],
             xaxis: {visible: true, range: [-1, 1]},
             yaxis: {visible: true, range: [-1, 1]},
